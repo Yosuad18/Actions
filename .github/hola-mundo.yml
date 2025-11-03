@@ -1,0 +1,11 @@
+name: hola-mundo
+on: [push]
+jobs:
+  Hola-mundo!!:
+    runs-on: ubuntu-latest
+    steps:
+      - name: public ID
+        ID: ip
+        uses: haythem/public-ip@v1.3
+      - name: Entonces
+        run: echo ¡Hola, mundo! ${{ steps.ip.outputs.ipv4 }}! 
