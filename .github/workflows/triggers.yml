@@ -1,30 +1,32 @@
 name: Triggers!!
 run-name: ¡Actions con triggers schudle, workflow_dispacht y push !
 on:
-  schudle:
+  schedule:
     - cron: '50 23 30 6 *'
+    
   push:
     branches: 
       - 'main' 
       - 'release/**'
     paths:
-      '**.py'
-  workflow_dispacht:
-  inputs:
-    lenguaje_favorito:
-      description: 'Lenguaje preferiod'
-      default: python
-      required: true
-      type: choice
-      options:
-      - javascript
-      - python
-      - java
-    nombre:
-      description: 'Tu nombre'
-      required: true
-      default: yosuad
-      type: string
+      - '**.py'
+
+  workflow_dispatch:
+    inputs:
+      lenguaje_favorito:
+        description: 'Lenguaje preferiod'
+        default: python
+        required: true
+        type: choice
+        options:
+        - javascript
+        - python
+        - java
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: yosuad
+        type: string
 
 jobs:
     hola-mundo-manual:
