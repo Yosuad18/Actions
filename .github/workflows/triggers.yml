@@ -1,0 +1,31 @@
+name: Aprendiendo GitHub Actions
+run-name: ¡Action schudle!
+on:
+  schudle:
+    -cron: '50 24 31 6 *'
+
+
+name: Aprendiendo GitHub Actions
+run-name: ¡Action push!
+on:
+  push:
+    branches: 
+      - 'main' 
+      - 'release/**'
+    paths:
+      '**.py'
+
+
+name: Aprendiendo GitHub Actions
+run-name: ¡Action workflow_dispacht!
+on:
+  workflow_dispacht:
+  inputs:
+    alerta:
+      description: 'nivel'
+      required: true
+      default: medio
+      type: choice 
+      options:
+      - bajo
+      - medio
