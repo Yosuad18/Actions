@@ -11,25 +11,40 @@ on:
       '**.py'
   workflow_dispacht:
   inputs:
-    lenguajes:
+    lenguaje_favorito:
       description: 'Lenguaje preferiod'
-      default: javascript
+      default: python
       required: true
-      type: choice 
+      type: choice
       options:
       - javascript
       - python
+      - java
     nombre:
       description: 'Tu nombre'
       required: true
-      type: Juan
+      default: yosuad
+      type: string
 
 jobs:
-  ejemplo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Mostrar información
-        run: 
-          echo "Evento: ${{ github.event_name }}"
-          echo "Branch: ${{ github.ref }}"
-          echo "Nivel de alerta: ${{ github.event.inputs.alerta }}"
+    hola-mundo-manual:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Definir nombre
+          run: echo "USERNAME=${{ inputs.nombre }}" >> $GITHUB_ENV
+        - name: Definir lenguaje
+          run: echo "LANGUAGE=${{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
+        - name: Correr script
+          run: python hola_lenguaje.py
+    hola-mundo:
+      if: ${{ github.event_name != 'workflow_dispatch' }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Definir variable
+          run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+        - name: Correr script
+          run: python hola_mundo.py
