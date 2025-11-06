@@ -1,11 +1,13 @@
-name: hola-mundo
+name: Aprendiendo GitHub Actions
+run-name: ¡Aprendiendo GitHub Actions por mi cuenta!
 on: [push]
 jobs:
-  Hola-mundo!!:
+  hola-mundo:
     runs-on: ubuntu-latest
     steps:
-      - name: public ID
-        ID: ip
-        uses: haythem/public-ip@v1.3
-      - name: Entonces
-        run: echo ¡Hola, mundo! ${{ steps.ip.outputs.ipv4 }}! 
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Correr script
+        run: python hola_mundo.py
