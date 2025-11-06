@@ -1,32 +1,28 @@
-name: Aprendiendo GIT-HUB Actions con triggers!!
-
-run-name: ${{ github.event_name }} ejecutado por ${{ github.actor }}
-
+name: Triggers!!
+run-name: ¡Actions con triggers schudle, workflow_dispacht y push !
 on:
-  # 🕒 Trigger programado
-  schedule:
-    - cron: '50 23 30 6 *' # Ojo: junio solo tiene 30 días
-
-  # 🚀 Trigger por push
+  schudle:
+    - cron: '50 23 30 6 *'
   push:
-    branches:
-      - 'main'
+    branches: 
+      - 'main' 
       - 'release/**'
     paths:
-      - '**.py'
-
-  # 🔘 Trigger manual desde la interfaz de GitHub
-  workflow_dispatch:
-    inputs:
-      alerta:
-        description: 'Nivel de alerta'
-        required: true
-        default: 'medio'
-        type: choice
-        options:
-          - bajo
-          - medio
-          - alto
+      '**.py'
+  workflow_dispacht:
+  inputs:
+    lenguajes:
+      description: 'Lenguaje preferiod'
+      default: javascript
+      required: true
+      type: choice 
+      options:
+      - javascript
+      - python
+    nombre:
+      description: 'Tu nombre'
+      required: true
+      type: Juan
 
 jobs:
   ejemplo:
