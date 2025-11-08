@@ -1,14 +1,16 @@
 name: Dia de semana con nombre en variables
 run-name: Variables
 on: 
-  workflow_dispacht
+  workflow_dispatch:
 env: 
-  dia_semana: Viernes
+  dia_semana: "Viernes"
 jobs:
   con_variables: 
-    runs on: ubuntu-latest
+    runs-on: ubuntu-latest
     env: 
       saludo: quiubo
+      NOMBRE: Yosuad
     steps:
       - name: saludar
-      run: echo "$saludo $NOMBRE, despierta por que hoy es $dia_semana"
+        run: echo "$saludo $NOMBRE, despierta por que hoy es $dia_semana"
+
