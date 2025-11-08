@@ -1,0 +1,9 @@
+name: contexto
+run-name: Hice el contexto
+on: push 
+jobs:
+  el-contexto:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    run on: ubuntu-latest
+    steps: 
+      - run: echo "Desplegando la rama $GITHUB_REF en el repo ${{github.repository}}"
